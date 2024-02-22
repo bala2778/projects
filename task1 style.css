@@ -1,0 +1,38 @@
+body{
+font-family: 'Poppins', sans-serif;
+}
+.heading{
+font-size: 32px;
+}
+.textfield{
+  width: 400px;
+  height: 50px;
+  border: 2px solid #0000FF;
+  border-radius: 14px; 
+}
+.textfield::placeholder{
+  padding-left: 20px;
+  color: #000;
+  font-size: 14px;
+}
+.add{
+  width: 100px;
+  height: 40px;
+  background-color: #0000FF;
+  margin-top: 30px;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 24px;
+}
+.cancel{
+  width: 100px;
+  height: 40px;
+  background-color: #FF0000;
+  margin-top: 30px;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 24px;
+  margin-left: 40px;
+}
