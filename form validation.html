@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Form Validator</title>
+<style>
+body
+{
+background-color: pink
+}
+</style>
+</head>
+<body>
+<div>
+<form id="form">
+<h2>Register</h2>
+<div class="form-control">
+<label for="username">Name</label>
+<input type="text" id="name" placeholder="Enter username" />
+<span style="color:red" id="name_error"></span>
+</div>
+<div>
+<label for="email">Email</label>
+<input type="text" id="email" placeholder="Enter email" />
+<span style="color:red" id="email_error"></span>
+</div>
+<div>
+<label for="password">password</label>
+<input type="text" id="password" placeholder="Enter password" />
+<span style="color:red" id="pass_error"></span>
+</div>
+<button type="submit">Submit</button>
+</form>
+</div>
+<script>
+const name=document.getElementById('name');
+const email=document.getElementById('email');
+const password=document.getElementById('password');
+const form=document.getElementById('form');
+var name_check=/^[a-zA-Z]+$/;
+var email_check=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+var pass_check=/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$/;
+const name_error=document.getElementById('name_error');
+const email_error=document.getElementById('email_error');
+const pass_error=document.getElementById('pass_error');
+form.addEventListener('submit',(e)=>
+{
+if(name.value==='' || name.value==null)
+{
+e.preventDefault();
+name_error.innerHTML = "Name is required";
+}
+else if(!name.value.match(name_check))
+{
+e.preventDefault();
+name_error.innerHTML = "Name should contain only alphabets";
+}
+else
+{
+name_error.innerHTML = "";
+}
+if(email.value==='' || email.value==null)
+{
+e.preventDefault();
+email_error.innerHTML = "Email is required";
+}
+else if(!email.value.match(email_check))
+{
+e.preventDefault();
+email_error.innerHTML = "Valid Email is required";
+}
+else
+{
+email_error.innerHTML = "";
+}
+if(password.value==='' || password.value==null)
+{
+e.preventDefault();
+pass_error.innerHTML = "password is required";
+}
+else if(!password.value.match(pass_check))
+{
+e.preventDefault();
+pass_error.innerHTML = "Password should contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number & one special character";
+}
+else
+{
+pass_error.innerHTML = "";
+} 
+}
+)
+</script>
+</body>
+</html>
