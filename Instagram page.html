@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+</head>
+<body>
+    <style>
+        body {
+    font-family: Cambria, Helvetica;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+header {
+  text-align: center;
+    background-color: #fafafa;
+    padding: 25px 0;
+    color: #000;
+}
+
+.buttons {
+    position: absolute;
+    border-radius: 100%;
+    right: 30px;
+    top: 30px;
+    cursor: pointer
+}
+
+header {
+    padding: 20px 0;
+    color: #000;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+}
+
+#user-info {
+    align-items: center;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+#user-info img {
+    height: 150px;
+    width: 150px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+#user-details h2 {
+    margin: 0;
+}
+
+#user-details {
+    text-align: left;
+}
+
+#user-stats p {
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+#user-actions {
+    margin-top: 10px;
+}
+
+.photo-grid {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.photo img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    border: none;
+}
+
+.photo {
+    border: 1.5px solid #ccc;
+    padding: 10px;
+}
+
+    </style>
+    <header>
+        <h1>Instagram</h1>
+        <div class="buttons">
+            <button id="login">Login</button>
+            <button id="signup">Sign Up</button>
+        </div>
+    </header>
+    <main>
+        <div id="user-info">
+            
+        </div>
+        <div id="photo-grid" class="photo-grid">
+            
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const userInfoDiv = document.getElementById('user-info');
+    const photoGridDiv = document.getElementById('photo-grid');
+
+    // Fetch user information from provided URL
+    fetch('http://jsonplaceholder.typicode.com/users/1')
+        .then(response => response.json())
+        .then(user => {
+            
+            const profilePic = document.createElement('img');
+            profilePic.src = 'https://via.placeholder.com/150'; 
+            profilePic.alt = 'Profile Picture';
+            profilePic.style.height = '150px';
+            profilePic.style.width = '150px';
+            profilePic.style.marginRight = '20px';
+            profilePic.style.borderRadius = '50%';
+            userInfoDiv.appendChild(profilePic);
+
+            const userDetailsDiv = document.createElement('div');
+            userDetailsDiv.id = 'user-details';
+            userInfoDiv.appendChild(userDetailsDiv);
+
+            const userNameHeading = document.createElement('h2');
+            userNameHeading.textContent = "virat.kohli";
+            userDetailsDiv.appendChild(userNameHeading);
+
+            const userStatsDiv = document.createElement('div');
+            userStatsDiv.id = 'user-stats';
+            userDetailsDiv.appendChild(userStatsDiv);
+
+            const userStats = [
+                { label: 'Posts', value: '1688' },
+                { label: 'Followers', value: '268M' },
+                { label: 'Following', value: '299' },
+                { label: 'Reels', value: '100' },
+                { label: 'Tagged', value: '50' }
+            ];
+
+            userStats.forEach(stat => {
+                const statParagraph = document.createElement('p');
+                statParagraph.textContent = `${stat.label}: ${stat.value}`;
+                userStatsDiv.appendChild(statParagraph);
+            });
+
+            const userActionsDiv = document.createElement('div');
+            userActionsDiv.id = 'user-actions';
+            userDetailsDiv.appendChild(userActionsDiv);
+
+            const followButton = document.createElement('button');
+            followButton.textContent = 'Follow';
+            userActionsDiv.appendChild(followButton);
+
+            const messageButton = document.createElement('button');
+            messageButton.textContent = 'Message';
+            userActionsDiv.appendChild(messageButton);
+        })
+        .catch(error => console.error('Error fetching user information:', error));
+
+    // Fetch grid of photos from provided URL
+    fetch('http://jsonplaceholder.typicode.com/photos')
+        .then(response => response.json())
+        .then(photos => {
+            
+            photos.slice(0, 10).forEach(photo => {
+                const photoDiv = document.createElement('div');
+                photoDiv.classList.add('photo');
+                photoDiv.innerHTML = `<img src="${photo.url}" alt="${photo.title}">`;
+                photoGridDiv.appendChild(photoDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching photos:', error));
+
+    document.getElementById('login').addEventListener('click', () => alert('Login'));
+    document.getElementById('signup').addEventListener('click', () => alert('Sign Up'));
+    document.getElementById('follow').addEventListener('click', () => alert('Follow'));
+    document.getElementById('message').addEventListener('click', () => alert('Message'));
+});
+    </script>
+</body>
+</html>
