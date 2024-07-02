@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showTab('home')">Home</a></li>
+            <li><a href="#" onclick="showTab('courses')">Courses</a></li>
+            <li><a href="#" onclick="showTab('lms')">LMS</a></li>
+            <li><a href="#" onclick="showTab('contact')">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Welcome to Our Learning Platform</h1>
+        <p>Your pathway to success starts here.</p>
+    </header>
+
+    <main>
+        <div id="home" class="tab-content">
+            <h2>Courses We Offer!!!</h2>
+            <p>Explore a variety of courses designed to help you succeed. We provide assistance with certification, placement, and continuous learning.</p>
+            <ul>
+                <br><li>Certification Assistance</li></br>
+                <br><li>Placement Support</li></br>
+                <br><li>Comprehensive Learning Materials</li></br>
+            </ul>
+        </div>
+
+        <div id="courses" class="tab-content">
+            <h2>Our Courses</h2>
+            <div class="course-grid">
+                <div class="course-tile" onmouseover="hoverTile('course1')" onclick="showCourseInfo('course1')">Course 1</div>
+                <div class="course-tile" onmouseover="hoverTile('course2')" onclick="showCourseInfo('course2')">Course 2</div>
+                <div class="course-tile" onmouseover="hoverTile('course3')" onclick="showCourseInfo('course3')">Course 3</div>
+                <div class="course-tile" onmouseover="hoverTile('course4')" onclick="showCourseInfo('course4')">Course 4</div>
+                <div class="course-tile" onmouseover="hoverTile('course5')" onclick="showCourseInfo('course5')">Course 5</div>
+            </div>
+            <div id="course-info" class="course-info"></div>
+        </div>
+
+        <div id="lms" class="tab-content">
+            <h2>Learning Management System</h2>
+            <p>Redirecting to our LMS...</p>
+            <a href="https://lms.example.com" target="_blank" rel="noopener noreferrer">Go to LMS</a>
+        </div>
+
+        <div id="contact" class="tab-content">
+            <h2>Contact Us</h2>
+            <p>Email: contact@company.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Main Street, Anytown, USA</p>
+            <p>Website: <a href="https://www.company.com">www.company.com</a></p>
+            <p>Follow us on social media:</p>
+            <ul>
+                <li><a href="https://facebook.com/company">Facebook</a></li>
+                <li><a href="https://twitter.com/company">Twitter</a></li>
+                <li><a href="https://linkedin.com/company">LinkedIn</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Our Learning Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
